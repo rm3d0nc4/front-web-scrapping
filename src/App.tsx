@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default App;
+import { useRef, useState } from "react";
+import { Product } from "./interfaces/product";
+import { CustomInput } from "./components/Input";
+import { Logo } from "./components/Logo";
+import { CardResult } from "./components/CardResult";
+
+export function App() {
+  const urlInputRef = useRef<HTMLInputElement>(null);
+  const [product, setProduct] = useState<Product>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const onHandleSearch = async () => {
+    setProduct(undefined);
+    setIsLoading(true);
+    const url: string | undefined = urlInputRef.current?.value;
+    const request: Request = new Request(`https://netshoes-scrapping-api.onrender.com/get-product?url=${url!}`);
+    const response: Response = await fetch(request);
+    const data = await response.json();
+    if (response.ok) {
+      setProduct(data as Product);
+    } else {
+      const message = data.message;
+      console.log(message)
+    }
+    setIsLoading(false);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+    <div className="page">
+      <header>
+        <Logo />
+      </header>
+      <main>
+        <CustomInput onSearch={onHandleSearch} urlInputRef={urlInputRef} />
+        <CardResult product={product} isLoading={isLoading} />
+      </main>
+      <footer>
+        <a href="https://www.github.com/rm3d0nc4" target="_blank">
+          @rm3d0nc4
+          <p></p>
         </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      </footer>
+    </div>
+  );
 }
-
-export default App
