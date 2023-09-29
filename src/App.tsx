@@ -23,7 +23,7 @@ export function App() {
       setProduct(data as Product);
     } else {
       const message = data.message;
-      console.log(message)
+      alert(message)
     }
     setIsLoading(false);
   };
