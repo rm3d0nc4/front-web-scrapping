@@ -17,7 +17,8 @@ A solução construída consiste de dois módulos (backend e fronted) que atuam 
 [repositório](https://github.com/rm3d0nc4/scrapping-api)
 
  O primeiro trata-se de uma **API** construída em Java utilizando Spring Boot para receber a URL do produto, fazer o web scrapping da página e devolver os dados em forma de um objeto (Json). Nela, há apenas um único endpoint (GET /get-product) que recebe a url do produto em um *query parameter* chamado **url**. A API foi publicada no [Render](https://render.com) e está disponível neste [link](https://netshoes-scrapping-api.onrender.com). Segue abaixo a url a ser utilizada para o srapping dos dados:
- 
+
+**Observação: a primeira chamada na url pode demorar um pouco mais para retornar o resultado. Nas próximas chamadas, o resultado deve ser quase instantâneo, a depender a conexão com internet** 
 
 ```
 https://netshoes-scrapping-api.onrender.com/get-product?url{url-do-produto}
@@ -38,5 +39,6 @@ https://netshoes-scrapping-api.onrender.com/get-product?url{url-do-produto}
 [repositório](https://github.com/rm3d0nc4/front-web-scrapping)
 
 Já o segundo módulo trata-se de uma interface frontend desenvolvida em [ReactJS](https://react.dev) para consumir a API e  fornecer uma interface amigável para que o usuário consiga visualizar as informações extraídas. O seu deploy foi feito dentro do próprio GitHub, através da ferramenta [GitHub Pages](https://pages.github.com) e está disponível neste [link](https://rm3d0nc4.github.io/front-web-scrapping/).
+**Observação: a primeira chamada na url pode demorar um pouco mais para retornar o resultado. Nas próximas chamadas, o resultado deve ser quase instantâneo, a depender a conexão com internet**
 ![Página Inicial](https://github.com/rm3d0nc4/front-web-scrapping/blob/main/src/assets/images/pagina-inicial-web.png)
 ![Página Inicial](https://github.com/rm3d0nc4/front-web-scrapping/blob/main/src/assets/images/pagina-incial-web-resultado.png)
