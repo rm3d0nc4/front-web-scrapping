@@ -1,7 +1,7 @@
 {
-  "name": "netshoes-web-scrapping",
+  "name": "front-web-scrapping",
   "private": false,
-  "homepage": "https://rm3d0nc4.github.io/front-web-scraping/",
+  "homepage": "https://rm3d0nc4.github.io/front-web-scrapping/",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
