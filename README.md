@@ -18,6 +18,7 @@ A solução construída consiste de dois módulos (backend e fronted) que atuam 
 
  O primeiro trata-se de uma **API** construída em Java utilizando Spring Boot para receber a URL do produto, fazer o web scrapping da página e devolver os dados em forma de um objeto (Json). Nela, há apenas um único endpoint (GET /get-product) que recebe a url do produto em um *query parameter* chamado **url**. A API foi publicada no [Render](https://render.com) e está disponível neste [link](https://netshoes-scrapping-api.onrender.com). Segue abaixo a url a ser utilizada para o srapping dos dados:
 
+
 **Observação: a primeira chamada na url pode demorar um pouco mais para retornar o resultado. Nas próximas chamadas, o resultado deve ser quase instantâneo, a depender a conexão com internet** 
 
 ```
